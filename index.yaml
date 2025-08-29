@@ -3,6 +3,20 @@ entries:
   langgraph-cloud:
   - apiVersion: v2
     appVersion: 0.2.0
+    created: "2025-08-29T18:39:09.468529166Z"
+    description: Helm chart to deploy the LangGraph Cloud application and all services
+      it depends on.
+    digest: ee81a34f9b269e075bb60b0abdb2582084d6f18c3e54832d02e15141f8f6b462
+    maintainers:
+    - email: ankush@langchain.dev
+      name: Ankush
+    name: langgraph-cloud
+    type: application
+    urls:
+    - https://github.com/MattMencel/helm-1/releases/download/langgraph-cloud-0.1.17/langgraph-cloud-0.1.17.tgz
+    version: 0.1.17
+  - apiVersion: v2
+    appVersion: 0.2.0
     created: "2025-06-17T15:41:34.251436127Z"
     description: Helm chart to deploy the LangGraph Cloud application and all services
       it depends on.
@@ -198,6 +212,19 @@ entries:
     - https://github.com/langchain-ai/helm/releases/download/langgraph-cloud-0.1.0/langgraph-cloud-0.1.0.tgz
     version: 0.1.0
   langgraph-dataplane:
+  - apiVersion: v2
+    appVersion: 0.11.19
+    created: "2025-08-29T18:39:09.648687131Z"
+    description: Helm chart to deploy a langgraph dataplane on kubernetes.
+    digest: ba9f26370b429e91dae6844f74a60969b411343c4e31bfcb01b0c7a51699987a
+    maintainers:
+    - email: ankush@langchain.dev
+      name: Ankush
+    name: langgraph-dataplane
+    type: application
+    urls:
+    - https://github.com/MattMencel/helm-1/releases/download/langgraph-dataplane-0.1.31/langgraph-dataplane-0.1.31.tgz
+    version: 0.1.31
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2025-06-17T15:41:34.470473101Z"
@@ -460,6 +487,20 @@ entries:
     - https://github.com/langchain-ai/helm/releases/download/langgraph-operator-0.1.0/langgraph-operator-0.1.0.tgz
     version: 0.1.0
   langsmith:
+  - apiVersion: v2
+    appVersion: 0.11.20
+    created: "2025-08-29T18:39:09.841367394Z"
+    description: Helm chart to deploy the langsmith application and all services it
+      depends on.
+    digest: 6e29b038406ed203b29ce69cd9ba5f1a8045e9b8a99a71d15601b3701f7fc806
+    maintainers:
+    - email: ankush@langchain.dev
+      name: Ankush
+    name: langsmith
+    type: application
+    urls:
+    - https://github.com/MattMencel/helm-1/releases/download/langsmith-0.11.6/langsmith-0.11.6.tgz
+    version: 0.11.6
   - apiVersion: v2
     appVersion: 0.10.74
     created: "2025-06-17T15:41:34.728352189Z"
@@ -2588,6 +2629,54 @@ entries:
     urls:
     - https://github.com/langchain-ai/helm/releases/download/langsmith-0.1.1/langsmith-0.1.1.tgz
     version: 0.1.1
+  langsmith-observability:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-08-29T18:39:10.062353884Z"
+    dependencies:
+    - alias: postgres-exporter
+      condition: postgres-exporter.enabled
+      name: prometheus-postgres-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 6.10.2
+    - alias: redis-exporter
+      condition: redis-exporter.enabled
+      name: prometheus-redis-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 6.11.0
+    - alias: nginx-exporter
+      condition: nginx-exporter.enabled
+      name: prometheus-nginx-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.6.0
+    - alias: kube-state-metrics
+      condition: kube-state-metrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 5.37.0
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 9.2.6
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: 6.30.1
+    - alias: tempo
+      condition: tempo.enabled
+      name: tempo
+      repository: https://grafana.github.io/helm-charts
+      version: 1.23.1
+    description: Helm chart to deploy the observability stack for LangSmith.
+    digest: 0e5a30db12472dab0425e259fbdb08adc03089d38cd2db8f2a999e71fdea8744
+    maintainers:
+    - email: romain@langchain.dev
+      name: Romain
+    name: langsmith-observability
+    type: application
+    urls:
+    - https://github.com/MattMencel/helm-1/releases/download/langsmith-observability-0.1.0/langsmith-observability-0.1.0.tgz
+    version: 0.1.0
   open-gpts:
   - apiVersion: v2
     appVersion: 0.1.0
@@ -2631,4 +2720,4 @@ entries:
     urls:
     - https://github.com/langchain-ai/helm/releases/download/open-gpts-0.1.0/open-gpts-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-17T15:41:34.944070105Z"
+generated: "2025-08-29T18:39:10.062790379Z"
